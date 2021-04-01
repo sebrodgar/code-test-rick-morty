@@ -1,0 +1,111 @@
+ext {
+    kotlin_version = '1.4.0'
+
+    libraries_versions = [
+            //Kotlin
+            coroutines_version                : '1.3.9',
+
+            // Gradle plugins
+            android_gradle_plugin             : '4.1.3',
+            versions_gradle_plugin            : '0.31.0',
+
+            // AndroidX
+            androidx_core_ktx                 : '1.3.2',
+            androidx_appcompat                : '1.2.0',
+            androidx_material                 : '1.3.0',
+            androidx_constraintlayout         : '2.0.4',
+            androidx_lifecycle                : '2.3.0',
+            androidx_navigation               : '2.3.0',
+            androidx_paging                   : "3.0.0-beta01",
+            android_desugaring_tools          : '1.0.9',
+            androidx_swiperefresh_layout      : '1.1.0',
+            androidx_room                     : '2.3.0-beta02',
+
+
+            // Dagger
+            dagger                            : '2.28.3',
+
+            // Square
+            leakcanary                        : '2.4',
+            okhttp                            : '4.8.1',
+            retrofit                          : '2.9.0',
+
+            // Other
+            chucker                           : '3.4.0',
+            gson                              : '2.8.6',
+            glide                             : '4.12.0',
+
+            //Test
+            junit                             : '4.13',
+            androidx_test_junit_ext           : '1.1.2',
+            androidx_espresso                 : '3.3.0',
+            mockito_kotlin                    : '2.2.0',
+            androidx_test_arch_core           : '2.1.0',
+            mockito_inline                    : '2.13.0'
+
+    ]
+
+    gradle_plugins = [
+            android_gradle_plugin                 : "com.android.tools.build:gradle:${libraries_versions.android_gradle_plugin}",
+            kotlin_gradle_plugin                  : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
+            navigation_safe_args_gradle_plugin    : "androidx.navigation:navigation-safe-args-gradle-plugin:${libraries_versions.androidx_navigation}",
+    ]
+
+    libraries = [
+            //Kotlin
+            kotlin                                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            kotlin_reflect                        : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            coroutines_core                       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libraries_versions.coroutines_version",
+            coroutines_android                    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries_versions.coroutines_version",
+
+            androidx_core_ktx                     : "androidx.core:core-ktx:${libraries_versions.androidx_core_ktx}",
+            androidx_appcompat                    : "androidx.appcompat:appcompat:${libraries_versions.androidx_appcompat}",
+            androidx_material                     : "com.google.android.material:material:${libraries_versions.androidx_material}",
+            androidx_constraintlayout             : "androidx.constraintlayout:constraintlayout:${libraries_versions.androidx_constraintlayout}",
+            androidx_livedata_ktx                 : "androidx.lifecycle:lifecycle-livedata-ktx:${libraries_versions.androidx_lifecycle}",
+            androidx_lifecycle_viewmodel_ktx      : "androidx.lifecycle:lifecycle-viewmodel-ktx:${libraries_versions.androidx_lifecycle}",
+            androidx_lifecycle_common_java        : "androidx.lifecycle:lifecycle-common-java8:${libraries_versions.androidx_lifecycle}",
+            androidx_navigation_fragment          : "androidx.navigation:navigation-fragment-ktx:${libraries_versions.androidx_navigation}",
+            androidx_navigation_ui                : "androidx.navigation:navigation-ui-ktx:${libraries_versions.androidx_navigation}",
+            androidx_paging                       : "androidx.paging:paging-runtime:${libraries_versions.androidx_paging}",
+            androidx_paging_common                : "androidx.paging:paging-common:${libraries_versions.androidx_paging}",
+            android_desugaring_tools              : "com.android.tools:desugar_jdk_libs:${libraries_versions.android_desugaring_tools}",
+            androidx_swiperefresh_layout          : "androidx.swiperefreshlayout:swiperefreshlayout:${libraries_versions.androidx_swiperefresh_layout}",
+            androidx_room_runtime                 : "androidx.room:room-runtime:${libraries_versions.androidx_room}",
+            androidx_room_ktx                     : "androidx.room:room-ktx:${libraries_versions.androidx_room}",
+            androidx_room_compiler                : "androidx.room:room-compiler:${libraries_versions.androidx_room}",
+
+
+
+            //Square
+            leakcanary                            : "com.squareup.leakcanary:leakcanary-android:${libraries_versions.leakcanary}",
+            retrofit                              : "com.squareup.retrofit2:retrofit:${libraries_versions.retrofit}",
+            retrofit_gson                         : "com.squareup.retrofit2:converter-gson:${libraries_versions.retrofit}",
+            okhttp                                : "com.squareup.okhttp3:okhttp:${libraries_versions.okhttp}",
+
+            // Other
+            chucker                               : "com.github.chuckerteam.chucker:library:${libraries_versions.chucker}",
+            chucker_no_op                         : "com.github.chuckerteam.chucker:library-no-op:${libraries_versions.chucker}",
+            gson                                  : "com.google.code.gson:gson:${libraries_versions.gson}",
+            glide                                 : "com.github.bumptech.glide:glide:${libraries_versions.glide}",
+
+
+            // Dagger
+            dagger                                : "com.google.dagger:dagger:${libraries_versions.dagger}",
+            dagger_android                        : "com.google.dagger:dagger-android:${libraries_versions.dagger}",
+            dagger_android_processor              : "com.google.dagger:dagger-android-processor:${libraries_versions.dagger}",
+            dagger_android_support                : "com.google.dagger:dagger-android-support:${libraries_versions.dagger}",
+            dagger_compiler                       : "com.google.dagger:dagger-compiler:${libraries_versions.dagger}",
+
+            // Test
+            junit                                 : "junit:junit:${libraries_versions.junit}",
+            androidx_test_junit_ext               : "androidx.test.ext:junit:${libraries_versions.androidx_test_junit_ext}",
+            androidx_espresso_core                : "androidx.test.espresso:espresso-core:${libraries_versions.androidx_espresso}",
+            mockito_kotlin                        : "com.nhaarman.mockitokotlin2:mockito-kotlin:${libraries_versions.mockito_kotlin}",
+            coroutines_test                       : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${libraries_versions.coroutines_version}",
+            androidx_test_arch_core               : "androidx.arch.core:core-testing:${libraries_versions.androidx_test_arch_core}",
+            mockito_inline                        : "org.mockito:mockito-inline:${libraries_versions.mockito_inline}"
+
+
+    ]
+}

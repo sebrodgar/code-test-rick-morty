@@ -1,0 +1,58 @@
+ext {
+    //App version
+    version_major = 1
+    version_minor = 0
+    version_patch = 0
+    //@version_build only modify the version code, no the version name
+    //It is use for release candidate updates in release branch
+    version_build = 0
+
+    localhostIp = {
+        def osName = System.properties['os.name'].toLowerCase()
+        if (osName.contains('mac os x')) {
+            def stdout = new ByteArrayOutputStream()
+
+            exec {
+                commandLine 'ipconfig', 'getifaddr', 'en0'
+                standardOutput = stdout
+                ignoreExitValue true
+            }
+
+            return stdout.toString().substring(0, stdout.toString().length() - 1)
+        } else {
+            def defaultDevHost = InetAddress.getLocalHost()
+                    .getCanonicalHostName()
+
+            return NetworkInterface.getNetworkInterfaces()
+                    .findResult(defaultDevHost) {
+                        def ifOk = it.isUp() &&
+                                !it.isVirtual() &&
+                                !it.isPointToPoint() &&
+                                !it.isLoopback() &&
+                                !it.getName().startsWith("br-")
+
+                        if (ifOk)
+                            return it.getInetAddresses().find {
+                                it instanceof Inet4Address &&
+                                        !it.isLoopbackAddress()
+                            }
+                        else
+                            return null
+                    }
+        }
+
+    }
+
+    project_config = [
+            applicationId       : "com.srg.codetestrickmorty",
+            min_sdk             : 21,
+            target_sdk          : 30,
+            compile_sdk         : 30,
+            vector_support      : true,
+            multidex            : true,
+            android_junit_runner: "com.srg.codetestrickmorty.DextOpenerAndroidJUnitRunner",
+            version_name        : "$version_major.$version_minor.$version_patch",
+            version_code        : version_major * 1000000 + version_minor * 10000 + version_patch * 100 + version_build,
+            localhostIp         : localhostIp
+    ]
+}
