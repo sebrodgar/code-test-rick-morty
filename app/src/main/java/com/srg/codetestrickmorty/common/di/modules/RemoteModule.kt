@@ -21,7 +21,7 @@ object RemoteModule {
 
     @Provides
     fun provideRetrofitService(context: Context): Retrofit = Retrofit.Builder()
-        .baseUrl("")
+        .baseUrl("https://rickandmortyapi.com/api")
         .client(provideOkHttpClient(context))
         .addConverterFactory(
             GsonConverterFactory.create(
