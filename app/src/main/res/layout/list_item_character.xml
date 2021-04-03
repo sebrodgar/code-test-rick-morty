@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/list_item_horizontal_margin"
+    android:layout_marginVertical="@dimen/list_item_vertical_margin"
+    app:cardCornerRadius="@dimen/card_view_radius"
+    app:cardElevation="@dimen/card_view_elevation"
+    tools:context=".presentation.features.characters.list.CharacterListFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray">
+
+        <ImageView
+            android:id="@+id/iv_character_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/list_item_horizontal_margin"
+            android:paddingVertical="@dimen/list_item_vertical_margin"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gl_character_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_character_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium"
+            android:textAppearance="?textAppearanceHeadline6"
+            android:textColor="@color/teal_200"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_character_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Evil Morty" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_character_status_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium"
+            android:textAppearance="?textAppearanceListItem"
+            android:textColor="?colorOnPrimarySurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_character_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_character_name"
+            tools:text="Alive - Human" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_character_last_know_location_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="@color/gray_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_character_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_character_status_gender"
+            android:text="@string/character_list_item_last_known_location_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_character_last_know_location_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium"
+            android:textAppearance="?textAppearanceListItem"
+            android:textColor="?colorOnPrimarySurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_character_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_character_last_know_location_title"
+            tools:text="Citadel of Ricks" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_character_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
