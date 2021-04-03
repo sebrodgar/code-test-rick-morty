@@ -65,6 +65,9 @@ dependencies {
     implementation libraries.androidx_paging
     implementation libraries.androidx_swiperefresh_layout
     implementation libraries.androidx_lifecycle_common_java
+    implementation libraries.androidx_room_runtime
+    implementation libraries.androidx_room_ktx
+    kapt libraries.androidx_room_compiler
 
     //Square
     implementation libraries.leakcanary
@@ -92,6 +95,7 @@ dependencies {
     testImplementation libraries.coroutines_test
     testImplementation libraries.androidx_test_arch_core
     testImplementation libraries.mockito_inline
+    testImplementation libraries.hamcrest
 
 
 }
