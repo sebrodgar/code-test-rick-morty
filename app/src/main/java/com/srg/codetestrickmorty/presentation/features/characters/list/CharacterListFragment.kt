@@ -7,14 +7,17 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.map
 import com.srg.codetestrickmorty.R
 import com.srg.codetestrickmorty.common.base.BaseFragment
 import com.srg.codetestrickmorty.common.di.injections.ViewModelInjectionFactory
+import com.srg.codetestrickmorty.common.errors.DialogErrorViewEntity
 import com.srg.codetestrickmorty.common.util.lists.ListItem
 import com.srg.codetestrickmorty.databinding.FragmentCharacterListBinding
 import com.srg.codetestrickmorty.presentation.common.extensions.setUpToolbar
+import com.srg.codetestrickmorty.presentation.common.extensions.showError
 import com.srg.codetestrickmorty.presentation.common.viewBinding
 import com.srg.codetestrickmorty.presentation.features.characters.list.adapters.CharacterListAdapter
 import com.srg.codetestrickmorty.presentation.features.characters.list.adapters.CharacterLoadStatusListAdapter
@@ -72,8 +75,8 @@ class CharacterListFragment @Inject constructor(
         charactersJob?.cancel()
         charactersJob = lifecycleScope.launch {
             viewModel.getCharacters().collectLatest {
-                adapter.submitData(it.map { recipesUi ->
-                    CharacterListItem(recipesUi)
+                adapter.submitData(it.map { charactersUi ->
+                    CharacterListItem(charactersUi)
                 })
             }
         }
@@ -106,9 +109,26 @@ class CharacterListFragment @Inject constructor(
     }
 
     private fun onItemClick(listItem: ListItem) {
-        (listItem as? CharacterListItem)?.let {
-            Toast.makeText(requireContext(), it.character.name, Toast.LENGTH_SHORT).show()
+        (listItem as? CharacterListItem)?.let { characterListItem ->
+            characterListItem.character.location.id?.let {
+                navigateToLastKnowLocation(
+                    it,
+                    characterListItem.character.name
+                )
+            } ?: showError(
+                listItem.context, DialogErrorViewEntity(
+                    dialogMessage = R.string.error_dialog_location_unknown
+                )
+            )
         }
+    }
 
+    private fun navigateToLastKnowLocation(locationId: Long, characterName: String) {
+        findNavController().navigate(
+            CharacterListFragmentDirections.actionCharacterListFragmentToLastKnowLocationFragment(
+                locationId,
+                characterName
+            )
+        )
     }
 }

@@ -2,6 +2,7 @@ package com.srg.codetestrickmorty
 
 import androidx.appcompat.app.AppCompatActivity
 import com.srg.codetestrickmorty.presentation.features.characters.list.CharacterListFragmentBuilder
+import com.srg.codetestrickmorty.presentation.features.locations.LastKnowLocationFragmentBuilder
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -13,7 +14,8 @@ abstract class MainActivityBuilder {
     @ContributesAndroidInjector(
         modules = [
             MainActivityModule::class,
-            CharacterListFragmentBuilder::class
+            CharacterListFragmentBuilder::class,
+            LastKnowLocationFragmentBuilder::class
         ]
     )
     abstract fun mainActivity(): MainActivity
