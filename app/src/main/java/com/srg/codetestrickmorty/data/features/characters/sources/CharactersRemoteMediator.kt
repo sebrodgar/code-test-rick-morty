@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.srg.codetestrickmorty.common.db.RickMortyDatabase
-import com.srg.codetestrickmorty.data.features.characters.RickMortyApiService
+import com.srg.codetestrickmorty.data.RickMortyApiService
 import com.srg.codetestrickmorty.data.features.characters.db.CharactersRemoteKeys
 import com.srg.codetestrickmorty.data.features.characters.models.CharacterApiModel
 import retrofit2.HttpException

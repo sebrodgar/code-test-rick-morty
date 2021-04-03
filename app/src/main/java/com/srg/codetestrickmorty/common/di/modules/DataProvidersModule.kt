@@ -2,7 +2,7 @@ package com.srg.codetestrickmorty.common.di.modules
 
 import android.content.Context
 import com.srg.codetestrickmorty.common.db.RickMortyDatabase
-import com.srg.codetestrickmorty.data.features.characters.RickMortyApiService
+import com.srg.codetestrickmorty.data.RickMortyApiService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
