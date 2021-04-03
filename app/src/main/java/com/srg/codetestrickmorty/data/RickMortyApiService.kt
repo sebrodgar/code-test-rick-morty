@@ -12,6 +12,6 @@ interface RickMortyApiService {
     suspend fun getAllCharacters(@Query("page") page: Int): CharacterApiResponse
 
     @GET("location")
-    suspend fun getLocationByCharacter(@Query("locationId") locationId: Long): LastKnowLocationApiModel
+    suspend fun getLastKnowLocation(@Query("locationId") locationId: Long): LastKnowLocationApiModel
 
 }
