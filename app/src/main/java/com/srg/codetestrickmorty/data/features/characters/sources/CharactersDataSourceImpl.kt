@@ -5,7 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.srg.codetestrickmorty.common.db.RickMortyDatabase
-import com.srg.codetestrickmorty.data.features.characters.RickMortyApiService
+import com.srg.codetestrickmorty.data.RickMortyApiService
 import com.srg.codetestrickmorty.data.features.characters.models.CharacterApiModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

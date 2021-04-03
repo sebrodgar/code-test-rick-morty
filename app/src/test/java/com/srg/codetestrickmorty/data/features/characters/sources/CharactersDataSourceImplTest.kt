@@ -1,7 +1,7 @@
 package com.srg.codetestrickmorty.data.features.characters.sources
 
 import com.srg.codetestrickmorty.common.db.RickMortyDatabase
-import com.srg.codetestrickmorty.data.features.characters.RickMortyApiService
+import com.srg.codetestrickmorty.data.RickMortyApiService
 import org.junit.Before
 import org.junit.runner.RunWith
 import org.mockito.Mock
