@@ -11,7 +11,6 @@ import com.srg.codetestrickmorty.data.features.characters.db.CharactersRemoteKey
 import com.srg.codetestrickmorty.data.features.characters.models.CharacterApiModel
 import retrofit2.HttpException
 import java.io.IOException
-import java.io.InvalidObjectException
 
 @ExperimentalPagingApi
 class CharactersRemoteMediator(
@@ -33,13 +32,14 @@ class CharactersRemoteMediator(
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getCharacterRemoteKeyForFirstItem(state)
-                    ?: throw InvalidObjectException("Remote key and the prevKey should not be null")
+                    ?: return MediatorResult.Success(endOfPaginationReached = true)
+
                 remoteKeys.prevKey ?: return MediatorResult.Success(endOfPaginationReached = true)
             }
             LoadType.APPEND -> {
                 val remoteKeys = getCharacterRemoteKeyForLastItem(state)
                 remoteKeys?.nextKey
-                    ?: throw InvalidObjectException("Remote key should not be null for $loadType")
+                    ?: return MediatorResult.Success(endOfPaginationReached = true)
             }
         }
 

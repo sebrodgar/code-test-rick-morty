@@ -32,7 +32,7 @@ class LocalDateTimeAdapter : JsonDeserializer<LocalDateTime?>,
             LocalDate.parse(dateString).atStartOfDay()
         } else LocalDateTime.parse(
             dateString,
-            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ")
+            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         )
     }
 

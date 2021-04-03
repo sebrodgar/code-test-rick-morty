@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CodeTestRickMorty</string>
+
+    <string name="loading">Loading</string>
+    <string name="language">Language: %s</string>
+    <string name="no_results">No results 😓</string>
+    <string name="unknown">\?</string>
+    <string name="retry">Retry</string>
+
+    <string name="character_list_item_last_known_location_title">Last known location:</string>
+
+    <string name="characters_list_title_screen">Rick Morty Characters</string>
 </resources>
