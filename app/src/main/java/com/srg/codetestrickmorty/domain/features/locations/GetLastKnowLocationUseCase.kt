@@ -4,9 +4,9 @@ import com.srg.codetestrickmorty.common.util.flow.UseCase
 import com.srg.codetestrickmorty.domain.features.locations.models.LastKnowLocationDomainModel
 import javax.inject.Inject
 
-class GetLastKnowLocationByCharacterUseCase @Inject constructor(
+class GetLastKnowLocationUseCase @Inject constructor(
     private val repository: LocationsRepository
-) : UseCase<GetLastKnowLocationByCharacterUseCase.Params, LastKnowLocationDomainModel>() {
+) : UseCase<GetLastKnowLocationUseCase.Params, LastKnowLocationDomainModel>() {
 
     data class Params(val locationId: Long)
 

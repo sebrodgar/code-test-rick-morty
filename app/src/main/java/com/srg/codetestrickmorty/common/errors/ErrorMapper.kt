@@ -1,5 +1,6 @@
 package com.srg.codetestrickmorty.common.errors
 
+import com.srg.codetestrickmorty.R
 import retrofit2.HttpException
 
 fun Throwable.toDomain() = when (this) {
@@ -15,3 +16,12 @@ fun Throwable.toDomain() = when (this) {
     }
     else -> this
 }
+
+fun Throwable.toDialogError(): DialogErrorViewEntity =
+    when ((this as? NetworkException)?.apiCode) {
+        APIErrorCode.UNKNOWN ->
+            DialogErrorViewEntity(
+                dialogMessage = R.string.error_dialog_unknow
+            )
+        else -> DialogErrorViewEntity(dialogMessage = R.string.error_dialog_unknow)
+    }

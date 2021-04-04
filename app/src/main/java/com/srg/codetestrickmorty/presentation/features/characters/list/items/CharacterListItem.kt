@@ -7,10 +7,10 @@ import com.srg.codetestrickmorty.R
 import com.srg.codetestrickmorty.common.util.lists.ListItem
 import com.srg.codetestrickmorty.common.util.lists.ListViewHolder
 import com.srg.codetestrickmorty.databinding.ListItemCharacterBinding
-import com.srg.codetestrickmorty.domain.features.characters.models.CharacterDomainModel
+import com.srg.codetestrickmorty.presentation.features.characters.models.CharacterUiModel
 
 class CharacterListItem(
-    val character: CharacterDomainModel
+    val character: CharacterUiModel
 ) : ListItem(
     R.layout.list_item_character,
     character

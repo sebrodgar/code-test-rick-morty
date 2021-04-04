@@ -6,8 +6,15 @@
     <string name="no_results">No results 😓</string>
     <string name="unknown">\?</string>
     <string name="retry">Retry</string>
+    <string name="error_dialog_unknow">unknown</string>
+    <string name="error_dialog_location_unknown">Location unknow</string>
 
     <string name="character_list_item_last_known_location_title">Last known location:</string>
+    <string name="character_last_known_location_for_title">Last known location for:</string>
+    <string name="character_last_known_location_number_of_residents">Number of residents: %1$s</string>
+    <string name="character_last_known_location_created">Created on %1$s</string>
+
 
     <string name="characters_list_title_screen">Rick Morty Characters</string>
+    <string name="last_know_location_title_screen">Last Know Location</string>
 </resources>

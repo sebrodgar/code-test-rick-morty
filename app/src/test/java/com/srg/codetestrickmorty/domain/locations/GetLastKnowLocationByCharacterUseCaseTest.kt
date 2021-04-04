@@ -1,11 +1,11 @@
-package com.srg.codetestrickmorty.domain
+package com.srg.codetestrickmorty.domain.locations
 
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.verify
 import com.srg.codetestrickmorty.data.features.locations.mappers.toDomain
-import com.srg.codetestrickmorty.domain.features.locations.GetLastKnowLocationByCharacterUseCase
+import com.srg.codetestrickmorty.domain.features.locations.GetLastKnowLocationUseCase
 import com.srg.codetestrickmorty.domain.features.locations.LocationsRepository
 import com.srg.codetestrickmorty.utils.LastKnowLocationApiModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,14 +21,14 @@ import kotlin.random.Random
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class GetLastKnowLocationByCharacterUseCaseTest {
-    private lateinit var useCase: GetLastKnowLocationByCharacterUseCase
+    private lateinit var useCase: GetLastKnowLocationUseCase
 
     @Mock
     private lateinit var repository: LocationsRepository
 
     @Before
     fun setUp() {
-        useCase = GetLastKnowLocationByCharacterUseCase(repository)
+        useCase = GetLastKnowLocationUseCase(repository)
     }
 
     @Test
