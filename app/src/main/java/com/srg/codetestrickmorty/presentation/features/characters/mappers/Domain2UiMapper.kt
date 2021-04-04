@@ -5,6 +5,7 @@ import com.srg.codetestrickmorty.presentation.features.characters.models.*
 
 fun CharacterDomainModel.toUi() =
     CharacterUiModel(
+        id,
         name,
         status.toUi(),
         species,
@@ -12,7 +13,8 @@ fun CharacterDomainModel.toUi() =
         gender.toUi(),
         origin.toUi(),
         location.toUi(),
-        image
+        image,
+        isFav
     )
 
 fun StatusDomainModel.toUi(): StatusUiModel = when (this) {

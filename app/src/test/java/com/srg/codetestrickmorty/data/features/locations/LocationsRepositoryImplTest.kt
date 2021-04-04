@@ -31,7 +31,7 @@ class LocationsRepositoryImplTest {
     }
 
     @Test
-    fun `it should call service last know location and success interactios`() = runBlocking {
+    fun `it should call service last know location and success interactions`() = runBlocking {
         //given:
         val response = LastKnowLocationApiModelFactory.createOne()
         val locationId = 20L

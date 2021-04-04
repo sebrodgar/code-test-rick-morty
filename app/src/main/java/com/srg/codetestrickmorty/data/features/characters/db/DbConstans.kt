@@ -11,5 +11,7 @@ object DbConstans {
 
     // Characters
     const val CHARACTERS_TABLE_NAME = "characters"
+    const val CHARACTERS_FAV_FIELD = "isFav"
+    const val CHARACTERS_ID_FIELD = "id"
 
 }

@@ -16,7 +16,8 @@ fun CharacterApiModel.toDomain() =
         location.toDomain(),
         image,
         url,
-        created
+        created,
+        isFav
     )
 
 fun StatusApiModel.toDomain(): StatusDomainModel = when (this) {

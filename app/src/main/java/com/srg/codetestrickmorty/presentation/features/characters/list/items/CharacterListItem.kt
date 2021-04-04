@@ -19,12 +19,13 @@ class CharacterListItem(
     private var _binding: ListItemCharacterBinding? = null
     private val binding: ListItemCharacterBinding get() = _binding!!
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     override fun bind(
         viewHolder: ListViewHolder,
-        onClickListener: ((T: ListItem) -> Unit)?
+        onClickListener: ((T: ListItem) -> Unit)?,
+        onFavClickListener: ((T: ListItem) -> Unit)?
     ) {
-        super.bind(viewHolder, onClickListener)
+        super.bind(viewHolder, onClickListener, onFavClickListener)
         _binding = ListItemCharacterBinding.bind(viewHolder.containerView)
         binding.tvCharacterName.text = character.name
         Glide.with(viewHolder.itemView.context).load(character.image)
@@ -34,6 +35,16 @@ class CharacterListItem(
         viewHolder.containerView.setOnClickListener {
             onClickListener?.invoke(this)
         }
-    }
 
+        if (character.isFav)
+            binding.ivCharacterAddFav.setImageDrawable(context.getDrawable(R.drawable.selector_heart_fav_fill))
+        else
+            binding.ivCharacterAddFav.setImageDrawable(context.getDrawable(R.drawable.selector_heart_fav_empty))
+
+        binding.ivCharacterAddFav.setOnClickListener {
+            character.isFav = !character.isFav
+            onFavClickListener?.invoke(this)
+            binding.ivCharacterAddFav.setImageDrawable(context.getDrawable(R.drawable.ic_heart_fill))
+        }
+    }
 }

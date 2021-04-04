@@ -1,4 +1,4 @@
-package com.srg.codetestrickmorty.presentation.features
+package com.srg.codetestrickmorty.presentation.features.location
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
@@ -47,7 +47,7 @@ class LastKnowLocationViewModelTest {
     }
 
     @Test
-    fun `it should call service get last know location use case and success interactios`() =
+    fun `it should call service get last know location use case and success interactions`() =
         coroutineTestRule.runBlockingTest {
             //given:
             val location = LastKnowLocationApiModelFactory.createOne().toDomain()

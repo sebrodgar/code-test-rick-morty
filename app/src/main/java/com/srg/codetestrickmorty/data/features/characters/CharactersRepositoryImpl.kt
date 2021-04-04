@@ -12,10 +12,13 @@ import javax.inject.Inject
 
 class CharactersRepositoryImpl @Inject constructor(
     private val charactersDataSource: CharactersDataSource
-): CharactersRepository {
+) : CharactersRepository {
 
     override fun getAllCharacters(): Flow<PagingData<CharacterDomainModel>> =
-        charactersDataSource.getAllCharacters().map { pagingData->
+        charactersDataSource.getAllCharacters().map { pagingData ->
             pagingData.map { it.toDomain() }
         }
+
+    override suspend fun addCharacterFav(isFav: Boolean, characterId: Long) =
+        charactersDataSource.addCharacterFav(isFav, characterId)
 }
