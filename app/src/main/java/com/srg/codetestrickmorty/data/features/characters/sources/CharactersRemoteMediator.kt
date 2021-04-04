@@ -33,7 +33,6 @@ class CharactersRemoteMediator(
             LoadType.PREPEND -> {
                 val remoteKeys = getCharacterRemoteKeyForFirstItem(state)
                     ?: return MediatorResult.Success(endOfPaginationReached = true)
-
                 remoteKeys.prevKey ?: return MediatorResult.Success(endOfPaginationReached = true)
             }
             LoadType.APPEND -> {
@@ -50,10 +49,6 @@ class CharactersRemoteMediator(
             val endOfPaginationReached = characters.isEmpty()
 
             local.withTransaction {
-                if (loadType == LoadType.REFRESH) {
-                    local.charactersRemoteKeysDao().clearRemoteKeys()
-                    local.charactersDao().clearCharacters()
-                }
 
                 val prevKey = if (page == RICKMORTY_STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1

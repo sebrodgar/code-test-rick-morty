@@ -15,7 +15,8 @@ abstract class ListItem(
 
     open fun bind(
         viewHolder: ListViewHolder,
-        onClickListener: ((T: ListItem) -> Unit)? = null
+        onClickListener: ((T: ListItem) -> Unit)? = null,
+        onFavClickListener: ((T: ListItem) -> Unit)? = null
     ) {
         context = viewHolder.containerView.context
     }

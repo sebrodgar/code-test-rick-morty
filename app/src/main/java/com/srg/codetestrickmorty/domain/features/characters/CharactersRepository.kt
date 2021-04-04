@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface CharactersRepository {
     fun getAllCharacters(): Flow<PagingData<CharacterDomainModel>>
+    suspend fun addCharacterFav(isFav: Boolean, characterId: Long)
+
 }

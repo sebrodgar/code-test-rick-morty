@@ -10,11 +10,14 @@ import com.srg.codetestrickmorty.data.features.characters.models.CharacterApiMod
 @Dao
 interface CharactersDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(recipes: List<CharacterApiModel>)
 
     @Query("SELECT * FROM ${DbConstans.CHARACTERS_TABLE_NAME}")
     fun getAllCharacters(): PagingSource<Int, CharacterApiModel>
+
+    @Query("UPDATE ${DbConstans.CHARACTERS_TABLE_NAME} SET ${DbConstans.CHARACTERS_FAV_FIELD} = :isFav WHERE ${DbConstans.CHARACTERS_ID_FIELD} == :characterId")
+    suspend fun addCharacterFav(isFav: Boolean, characterId: Long)
 
     @Query("DELETE FROM ${DbConstans.CHARACTERS_TABLE_NAME}")
     suspend fun clearCharacters()

@@ -18,31 +18,35 @@ import com.srg.codetestrickmorty.common.util.lists.ListItem
 import com.srg.codetestrickmorty.databinding.FragmentCharacterListBinding
 import com.srg.codetestrickmorty.presentation.common.extensions.setUpToolbar
 import com.srg.codetestrickmorty.presentation.common.extensions.showError
+import com.srg.codetestrickmorty.presentation.common.flow.observeLce
 import com.srg.codetestrickmorty.presentation.common.viewBinding
 import com.srg.codetestrickmorty.presentation.features.characters.list.adapters.CharacterListAdapter
 import com.srg.codetestrickmorty.presentation.features.characters.list.adapters.CharacterLoadStatusListAdapter
 import com.srg.codetestrickmorty.presentation.features.characters.list.items.CharacterListItem
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
 class CharacterListFragment @Inject constructor(
     private val vmf: ViewModelInjectionFactory
 ) : BaseFragment(R.layout.fragment_character_list) {
 
     private val viewModel by viewModels<CharacterListViewModel> { vmf }
     private val binding by viewBinding(FragmentCharacterListBinding::bind)
-    private val adapter = CharacterListAdapter(onItemClickListener = { onItemClick(it) })
+    private val adapter = CharacterListAdapter(onItemClickListener = { onItemClick(it) },
+        onFavClickListener = { onFavClick(it) })
 
     private var charactersJob: Job? = null
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi(view.context)
         initAdapter(view.context)
         setListeners()
+        initObservers(view.context)
         getCharacters()
     }
 
@@ -82,6 +86,18 @@ class CharacterListFragment @Inject constructor(
         }
     }
 
+    private fun initObservers(context: Context) {
+        viewModel.setFav.observeLce(viewLifecycleOwner,
+            onContent = {
+                adapter.refresh()
+            },
+            onError = {
+                showError(context, it)
+            },
+            onLoading = {}
+        )
+    }
+
     private fun initAdapter(context: Context) {
         binding.rvCharacter.adapter = adapter.withLoadStateHeaderAndFooter(
             header = CharacterLoadStatusListAdapter { adapter.retry() },
@@ -119,6 +135,15 @@ class CharacterListFragment @Inject constructor(
                 listItem.context, DialogErrorViewEntity(
                     dialogMessage = R.string.error_dialog_location_unknown
                 )
+            )
+        }
+    }
+
+    private fun onFavClick(listItem: ListItem) {
+        (listItem as? CharacterListItem)?.let { characterListItem ->
+            viewModel.addCharacterFav(
+                characterListItem.character.isFav,
+                characterListItem.character.id
             )
         }
     }

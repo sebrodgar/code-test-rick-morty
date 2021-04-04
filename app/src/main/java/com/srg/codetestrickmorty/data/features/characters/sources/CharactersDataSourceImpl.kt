@@ -31,4 +31,8 @@ class CharactersDataSourceImpl @Inject constructor(
             pagingSourceFactory = pagingSourceFactory
         ).flow
     }
+
+    override suspend fun addCharacterFav(isFav: Boolean, characterId: Long) =
+        local.charactersDao().addCharacterFav(isFav, characterId)
+
 }

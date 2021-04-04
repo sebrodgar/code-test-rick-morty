@@ -1,12 +1,10 @@
-package com.srg.codetestrickmorty.domain.locations
+package com.srg.codetestrickmorty.domain.features.locations
 
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.stub
 import com.nhaarman.mockitokotlin2.verify
 import com.srg.codetestrickmorty.data.features.locations.mappers.toDomain
-import com.srg.codetestrickmorty.domain.features.locations.GetLastKnowLocationUseCase
-import com.srg.codetestrickmorty.domain.features.locations.LocationsRepository
 import com.srg.codetestrickmorty.utils.LastKnowLocationApiModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

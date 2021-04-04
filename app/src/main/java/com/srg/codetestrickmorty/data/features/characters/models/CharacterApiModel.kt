@@ -19,5 +19,6 @@ data class CharacterApiModel(
     @Embedded(prefix = "location_") val location: LocationApiModel,
     val image: String,
     val url: String,
-    val created: LocalDateTime
+    val created: LocalDateTime,
+    val isFav: Boolean = false
 )

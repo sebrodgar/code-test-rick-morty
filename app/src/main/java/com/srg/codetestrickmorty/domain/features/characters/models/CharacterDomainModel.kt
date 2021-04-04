@@ -13,5 +13,6 @@ data class CharacterDomainModel(
     val location: LocationDomainModel,
     val image: String,
     val url: String,
-    val created: LocalDateTime
+    val created: LocalDateTime,
+    val isFav: Boolean
 )
