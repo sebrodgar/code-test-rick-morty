@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/characterListFragment">
+    <fragment
+        android:id="@+id/characterListFragment"
+        android:name="com.srg.codetestrickmorty.presentation.features.characters.list.CharacterListFragment"
+        android:label="list_item_character"
+        tools:layout="@layout/list_item_character">
+        <action
+            android:id="@+id/action_characterListFragment_to_lastKnowLocationFragment"
+            app:destination="@id/lastKnowLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lastKnowLocationFragment"
+        android:name="com.srg.codetestrickmorty.presentation.features.locations.LastKnowLocationFragment"
+        android:label="LastKnowLocationFragment"
+        tools:layout="@layout/fragment_last_know_location">
+        <argument
+            android:name="locationId"
+            app:argType="long" />
+        <argument
+            android:name="characterName"
+            app:argType="string" />
+    </fragment>
+</navigation>
